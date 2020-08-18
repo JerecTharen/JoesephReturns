@@ -16,13 +16,17 @@
         
         <script>
             //JS to do clock count down
-            const returnDateString = "10/16/2020 4:30PM";
             function doDate(){
+                //Initialize Date objects in client browser. Note that these times
+                //will be in the time zone of the client.
                 var nowDate = new Date;
-                var returnDate = new Date(2020, 9, 16, 4, 30, 0, 0);
-                console.log(returnDate);
+                var returnDate = new Date(2020, 9, 16, 4, 30, 0, 0);//4:30 Moutain Standard Time
 
+                //Get first the difference in miliseconds between now and when he returns
                 var diffMili = returnDate - nowDate;
+                //Use the difference to calculate how many days, hours, etc it can be
+                //devided into. Then subtract that from the total and calculate for the next
+                //time unit.
                 var diffDays = Math.floor(diffMili / (1000 * 60 * 60 * 24));
                 var diffDaysMili = diffDays * (1000 * 60 * 60 * 24);
                 var diffHours = Math.floor((diffMili - diffDaysMili) / (1000 * 60 * 60));
@@ -31,11 +35,18 @@
                 var diffMinutesMili = diffMinutes * (1000 * 60);
                 var diffSeconds = Math.floor((diffMili - diffDaysMili - diffHoursMili - diffMinutesMili) / 1000);
 
+                //Create formatted string. IMPORTANT: This will only work for ES6 enabled browsers - which is okay here
+                //because my family is not going to use IE
                 var ret = `${Math.abs(diffDays)}-Days ${diffHours}-Hours ${diffMinutes}-Minutes ${diffSeconds}-Seconds`;
                 
-                console.log(ret);
+                //Set the return time using JQuery
                 $("#returnTime").text(ret);
             }
+
+            //Set the return time when the page loads initially.
+            doDate();
+
+            //Call this function every second so it updates like a proper count down.
             setInterval(doDate, 1000);
         </script>
     </body>
