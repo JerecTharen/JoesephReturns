@@ -7,11 +7,38 @@
 			  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
               crossorigin="anonymous">
         </script>
+        <style>
+            #titleText{
+                margin: 20px auto;
+                width: 50%;
+                text-align: center;
+            }
+            html, body{
+                height: 100%;
+                margin: 0;
+                width: 100%;
+            }
+            #pageContent{
+                display: flex;
+                flex-direction: column;
+                width: 70%;
+                height: 100%;
+                margin: 0;
+                align-items: center;
+            }
+            #siteImage{
+                height: 100%;
+            }
+        </style>
     </head>
     <body>
-        <h1>Joseph Returns in <span id="returnTime"></span></h1>
+        <div id="pageContent">
+            
+            <h1 id="titleText">Joseph Returns in <span id="returnTime"></span></h1>
 
+            <img id="siteImage" src="https://assets.ldscdn.org/4e/b7/4eb7f37b6c2a66982b92e0b51cf8bb6c034f304d/kirtland_temple.jpeg" alt="Kirtand temple" />
 
+        </div>
 
         
         <script>
